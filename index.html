@@ -282,6 +282,65 @@
   .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
   .footer-row .brand span{font-size:0.95rem;}
   footer p{color:var(--gray);font-size:0.85rem;}
+  .footer-legal{display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:var(--gray);font-size:.82rem;}
+  .footer-legal a{transition:color .2s;}
+  .footer-legal a:hover{color:var(--white);}
+  .footer-cookie-link{border:0;background:none;color:inherit;font:inherit;font-size:inherit;transition:color .2s;}
+  .footer-cookie-link:hover{color:var(--white);}
+
+  /* Aviso de cookies y preferencias */
+  .cookie-banner{
+    position:fixed;left:max(22px,env(safe-area-inset-left,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:205;
+    width:min(540px,calc(100vw - 32px));padding:22px 23px;border:1px solid rgba(246,246,244,.15);border-radius:18px;
+    background:radial-gradient(ellipse at 100% 0,rgba(227,6,19,.15),transparent 47%),rgba(19,19,22,.97);
+    backdrop-filter:blur(18px);box-shadow:0 18px 65px rgba(0,0,0,.55);opacity:0;transform:translateY(14px);
+    visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;
+  }
+  .cookie-banner.is-visible{opacity:1;transform:translateY(0);visibility:visible;pointer-events:auto;}
+  .cookie-banner-head{display:flex;align-items:center;gap:12px;margin-bottom:9px;}
+  .cookie-mark{width:38px;height:38px;display:grid;place-items:center;flex:none;border-radius:12px;border:1px solid rgba(227,6,19,.28);background:rgba(227,6,19,.1);color:#ff6670;}
+  .cookie-mark svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+  .cookie-banner h2,.cookie-dialog h2{font-family:var(--head);font-size:1.1rem;letter-spacing:-.02em;}
+  .cookie-banner p{color:#b2b2ba;font-size:.83rem;line-height:1.6;}
+  .cookie-banner p a,.cookie-dialog a{color:#ff8991;text-decoration:underline;text-underline-offset:3px;}
+  .cookie-actions{display:flex;gap:10px;margin-top:16px;}
+  .cookie-actions button,.cookie-save{min-height:42px;padding:0 17px;border-radius:9px;font:inherit;font-size:.84rem;font-weight:700;transition:transform .18s,border-color .18s,background .18s;}
+  .cookie-actions button:hover,.cookie-save:hover{transform:translateY(-1px);}
+  .cookie-accept,.cookie-save{border:1px solid var(--red);background:var(--red);color:white;}
+  .cookie-configure{border:1px solid rgba(246,246,244,.18);background:rgba(246,246,244,.04);color:var(--white);}
+  .cookie-configure:hover{border-color:rgba(246,246,244,.42);}
+  .cookie-backdrop{position:fixed;inset:0;z-index:220;display:grid;place-items:center;padding:18px;background:rgba(3,3,5,.76);backdrop-filter:blur(7px);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;}
+  .cookie-backdrop.is-open{opacity:1;visibility:visible;}
+  .cookie-dialog{width:min(560px,100%);max-height:min(720px,calc(100dvh - 36px));overflow:auto;padding:30px;border:1px solid rgba(246,246,244,.15);border-radius:20px;background:radial-gradient(ellipse at 100% 0,rgba(227,6,19,.16),transparent 43%),var(--black-2);box-shadow:0 28px 100px rgba(0,0,0,.65);transform:translateY(10px) scale(.99);transition:transform .2s;}
+  .cookie-backdrop.is-open .cookie-dialog{transform:translateY(0) scale(1);}
+  .cookie-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;}
+  .cookie-dialog h2{font-size:1.5rem;margin:1px 0 8px;}
+  .cookie-dialog-intro{max-width:58ch;margin-bottom:18px;color:var(--gray);font-size:.88rem;}
+  .cookie-dialog-close{width:36px;height:36px;display:grid;place-items:center;flex:none;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--gray);font-size:1.2rem;}
+  .cookie-dialog-close:hover{color:var(--white);}
+  .cookie-category{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0;border-top:1px solid var(--line);}
+  .cookie-category-copy strong{display:block;font-size:.9rem;}
+  .cookie-category-copy span{display:block;margin-top:3px;color:var(--gray);font-size:.77rem;line-height:1.45;}
+  .cookie-category em{display:block;margin-top:5px;color:#9a9aa2;font-family:var(--mono);font-size:.65rem;font-style:normal;}
+  .cookie-category input{width:42px;height:24px;flex:none;appearance:none;border:1px solid #55555d;border-radius:20px;background:#303036;transition:background .18s,border-color .18s;cursor:pointer;}
+  .cookie-category input::before{content:"";display:block;width:16px;height:16px;margin:3px;border-radius:50%;background:#aaa;transition:transform .18s,background .18s;}
+  .cookie-category input:checked{border-color:var(--red);background:var(--red);}
+  .cookie-category input:checked::before{transform:translateX(17px);background:white;}
+  .cookie-category input:disabled{opacity:.85;cursor:not-allowed;}
+  .cookie-dialog-note{margin:13px 0 18px;padding:12px 13px;border-left:2px solid var(--red);background:rgba(246,246,244,.035);color:#b2b2ba;font-size:.76rem;line-height:1.55;}
+  .cookie-dialog-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .cookie-dialog-footer a{font-size:.78rem;}
+  .cookie-save{min-width:140px;}
+  .cookie-status{min-height:1.3em;margin-top:10px;color:#ff9ca3;font-size:.78rem;}
+  @media(max-width:540px){
+    .footer-legal{width:100%;}
+    .cookie-banner{left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:calc(100vw - 24px);padding:18px;border-radius:15px;}
+    .cookie-actions button{flex:1;padding:0 12px;}
+    .cookie-dialog{padding:24px 20px;border-radius:17px;}
+    .cookie-dialog-footer{align-items:stretch;flex-direction:column-reverse;}
+    .cookie-save{width:100%;}
+  }
+  @media(prefers-reduced-motion:reduce){.cookie-banner,.cookie-backdrop,.cookie-dialog,.cookie-category input,.cookie-category input::before{transition:none;}}
 
   .whatsapp-float{
     position:fixed;bottom:24px;right:24px;z-index:99;
@@ -622,9 +681,54 @@
       <span>JUAN ARROYO</span>
     </a>
     <div class="social-row" id="socialRowFooter"></div>
-    <p>© 2026 Juan Arroyo — Servicios Digitales</p>
+    <div class="footer-legal">
+      <a href="/privacidad">Política de privacidad</a>
+      <button class="footer-cookie-link" id="footerCookieSettings" type="button">Configurar cookies</button>
+      <p>© 2026 Juan Arroyo — Servicios Digitales</p>
+    </div>
   </div>
 </footer>
+
+<aside class="cookie-banner" id="cookieBanner" aria-labelledby="cookieBannerTitle" aria-describedby="cookieBannerCopy" aria-hidden="true">
+  <div class="cookie-banner-head">
+    <span class="cookie-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 13a8 8 0 1 1-9-9 4 4 0 0 0 9 9Z"/><path d="M8 13h.01M12 16h.01M13 9h.01"/></svg></span>
+    <h2 id="cookieBannerTitle">Tu privacidad, a tu manera</h2>
+  </div>
+  <p id="cookieBannerCopy">Las cookies pueden recordar preferencias y ayudar a mejorar la navegación. Este sitio solo usa una necesaria para recordar tu elección; no tiene analítica ni marketing activos. <a href="/privacidad">Conoce la política de privacidad</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-accept" id="cookieAccept" type="button">Aceptar</button>
+    <button class="cookie-configure" id="cookieConfigure" type="button">Configurar</button>
+  </div>
+</aside>
+
+<div class="cookie-backdrop" id="cookieBackdrop" aria-hidden="true">
+  <section class="cookie-dialog" id="cookieDialog" role="dialog" aria-modal="true" aria-labelledby="cookieDialogTitle" aria-describedby="cookieDialogIntro">
+    <div class="cookie-dialog-head">
+      <div><span class="section-tag">PRIVACIDAD · PREFERENCIAS</span><h2 id="cookieDialogTitle">Configura tus cookies</h2></div>
+      <button class="cookie-dialog-close" id="cookieDialogClose" type="button" aria-label="Cerrar configuración">×</button>
+    </div>
+    <p class="cookie-dialog-intro" id="cookieDialogIntro">Elige qué categorías opcionales permites. Puedes cambiar de opinión cuando quieras desde el pie de página.</p>
+    <div class="cookie-category">
+      <div class="cookie-category-copy"><strong>Necesarias</strong><span>Permiten guardar y recordar tu decisión de privacidad.</span><em>Siempre activas</em></div>
+      <input type="checkbox" checked disabled aria-label="Cookies necesarias, siempre activas">
+    </div>
+    <label class="cookie-category" for="cookiePreferences">
+      <span class="cookie-category-copy"><strong>Preferencias</strong><span>Se usarían para recordar ajustes de experiencia si se incorpora esa función.</span><em>Sin cookies de preferencias adicionales activas actualmente</em></span>
+      <input id="cookiePreferences" type="checkbox">
+    </label>
+    <label class="cookie-category" for="cookieAnalytics">
+      <span class="cookie-category-copy"><strong>Analítica</strong><span>Medir el uso del sitio para entender y mejorar la navegación.</span><em>Sin herramientas de analítica activas actualmente</em></span>
+      <input id="cookieAnalytics" type="checkbox">
+    </label>
+    <label class="cookie-category" for="cookieMarketing">
+      <span class="cookie-category-copy"><strong>Marketing</strong><span>Medir campañas o personalizar comunicaciones.</span><em>Sin herramientas de marketing activas actualmente</em></span>
+      <input id="cookieMarketing" type="checkbox">
+    </label>
+    <p class="cookie-dialog-note">Guardar una categoría opcional registra tu elección, pero no activa rastreadores. En este momento solo se utiliza la cookie necesaria para recordar el consentimiento.</p>
+    <div class="cookie-dialog-footer"><a href="/privacidad">Leer la política de privacidad</a><button class="cookie-save" id="cookieSave" type="button">Guardar selección</button></div>
+    <p class="cookie-status" id="cookieStatus" role="status" aria-live="polite"></p>
+  </section>
+</div>
 
 <div class="lead-backdrop" id="leadBackdrop" aria-hidden="true">
   <section class="lead-dialog" id="leadDialog" role="dialog" aria-modal="true" aria-labelledby="leadTitle" aria-describedby="leadIntro">
@@ -724,5 +828,6 @@
 </script>
 <script src="/static/chatbot.js" defer></script>
 <script src="/static/leads.js" defer></script>
+<script src="/static/cookies.js" defer></script>
 </body>
 </html>
