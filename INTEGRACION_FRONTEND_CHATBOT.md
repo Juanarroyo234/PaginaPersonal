@@ -3,8 +3,10 @@
 ## Archivos
 
 - `main.py`: conserva la instancia FastAPI y `/hello/{name}`; ahora entrega el HTML elegido en `/` y sirve la carpeta `static/` bajo `/static`.
-- `pagina_logos_corregidos_v2.html`: HTML original del portafolio, conservado con sus estilos, contenido, logos incrustados, secciones y enlaces. Se añadieron el favicon local embebido, el cursor temático y el contenedor accesible del chatbot.
+- `index.html`: página del portafolio, servida en `/` con sus estilos, contenido, logos incrustados, secciones y enlaces. Incluye el popup accesible para solicitar una asesoría gratuita.
 - `static/chatbot.js`: interfaz y respuestas locales de JARVIS.
+- `static/leads.js`: controles del popup, validación del formulario y envío al backend.
+- `leads.sqlite3`: base de datos local creada al iniciar el servidor; conserva nombre, teléfono normalizado y fecha/hora UTC del registro.
 
 ## Cómo iniciar
 
@@ -37,6 +39,8 @@ En equipos con puntero preciso, el cursor normal se reemplaza por un SVG de cód
 
 - `GET /`: página HTML.
 - `GET /static/chatbot.js`: lógica del asistente.
+- `GET /static/leads.js`: lógica del formulario de asesoría.
+- `POST /api/leads`: valida y guarda las solicitudes en SQLite; los teléfonos normalizados son únicos.
 - `GET /hello/{name}`: endpoint preexistente conservado.
 - No se usan ni modifican endpoints de agente, Groq, inventario o ropa; este proyecto no los contenía al integrarlo.
 
